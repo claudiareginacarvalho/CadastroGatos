@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
   # Job para configurar o Docker
   docker:
@@ -36,10 +36,17 @@ jobs:
 
   testes:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/setup-java@v4
-        with:
-          java-version: '24'
-          distribution: 'temurin'
-      - name: Run the Maven verify phase
-        run: mvn clean test
+        - name: Check out repository code
+          uses: actions/checkout@v6
+
+        - name: Set up Java
+          uses: actions/setup-java@v4
+
+          with:
+            java-version: '21'
+            distribution: 'temurin'
+
+        - name: Run tests
+          run: mvn clean test
