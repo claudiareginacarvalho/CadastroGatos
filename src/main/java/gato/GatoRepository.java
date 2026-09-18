@@ -20,7 +20,7 @@ public class GatoRepository {
          for(Gato g : bancoDeDados) {
              if (g.getNome().equals(nome)){
                 g.setPeso(novoPeso);
-                 System.out.println("Peso Alterada com sucesso!");
+                 System.out.println("Peso Alterado com sucesso!");
              }
          }
 
